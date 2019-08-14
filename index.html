@@ -8,21 +8,20 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Text Adventure!</title>
 </head>
-
 <body>
-
+    
     <div class="wrapper">
         <div class="text-adventure-container">
-            <div class="text-adventure-display"></div>
+            <div class="text-adventure-display" id="text-adventure-display"></div>
             <form class="text-controls">
-                <input type="text">
+                <input class="text-input" type="text" id="text-input" onkeydown="handleKeyDownText(event)">
             </form>
             <div class="text-adventure-commands-container">
                 <p>List of Commands</p>
             </div>
         </div>
     </div>
-
+    
 </body>
-
+<script src="main.js" type="text/javascript"></script>
 </html>
