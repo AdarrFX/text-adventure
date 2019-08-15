@@ -10,7 +10,7 @@ let gameMap = {
   bucketRaised: false,
   meadowDugUp: false,
   armoryGateOpen: false,
-  monsterDead: false,
+  monsterSleep: false,
   princessTalkedTo: false,
 }
 
@@ -28,6 +28,44 @@ let objectDescriptions = {
     spray: "A sleeping spray that looks like it could really put something big to sleep.",
     key: "A key that looks like it could open a rather simple door.",
     crystal: "A crystal that a someone fancy like a princess might like."
+  },
+  itemUses: {
+    shovel: function() {
+      if(player.xPosition === 0 && player.yPosition === 2 && gameMap.meadowDugUp === false) {
+        gameMap.meadowDugUp = true;
+        player.inventory.push("crank");
+        objectDescriptions.room[0][2].DIRT = "The dirt lies scattered around a small hole where the crank was buried.";
+        printOut("You start to dig with the shovel in your inventory and before long, you find a strange metal crank buried in the ground, the kind that looks like it could be used to crank open something very large and heavy. You place the crank in your inventory.");
+      } else {
+        printOut("You see no practical place to use a shovel here.")
+      }
+    },
+    spray: function() {
+      if(player.xPosition === 2 && player.yPosition === 2 && gameMap.monsterSleep === false) {
+        gameMap.monsterSleep = true;
+        objectDescriptions.room[2][2].MONSTER = "The fearsome beast is now sleeping peacefully. She gives a snort every now and then.";
+        printOut("Acting fast, you quickly spray the monster with the sleeping spray. She stops, sniffs curiously, then teeters about, finally falling down, sound asleep. The crash makes a crystal tumble down, landing beside her.");
+      } else if (player.xPosition === 1 && player.yPosition === 0) {
+        printOut("You whip out the spray, blasting the princess in the face with the sleeping spray. She sneezes, then loses conciousness, collapsing onto the glass end table beside her throne, which promptly smashes. The guards rush in and seize you, throwing you into the dungeon. Needless to say, when the princess wakes up, she won't be happy.");
+      } else {
+        printOut("You don't see any practical use for the spray here.")
+      }
+    },
+    key: function() {
+      if(player.xPosition === 0 && player.yPosition === 0 && gameMap.woodcutterLoghouseUnlocked === false){
+        gameMap.woodcutterLoghouseUnlocked = true;
+        objectDescriptions.room[0][0].DOOR = "The door is open.";
+        objectDescriptions.room[0][0].CABIN = "The cabin door is open. There is a shovel in the corner.";
+        printOut("You unlock the door with the key in your inventory.");
+      } else {
+        printOut("You don't see any use for this key here.");
+      }
+    },
+    crystal: function() {
+      if(player.xPosition === 1 && player.yPosition === 0) {
+        printOut("You hand the crystal to the princess, who shrugs and throws it into a bin behind her, also full of crystals. She tosses you a bag of gold, a salary to cover your expenses for the next 30 years. Not a bad haul, all in all.")
+      }
+    }
   },
   objectUses: {
     CABIN: function () {
@@ -52,7 +90,7 @@ let objectDescriptions = {
         gameMap.meadowDugUp = true;
         player.inventory.push("crank");
         objectDescriptions.room[0][2].DIRT = "The dirt lies scattered around a small hole where the crank was buried.";
-        printOut("You start to dig and before long, you find a strange metal crank buried in the ground, the kind that looks like it could be used to crank open something very large and heavy. You place the crank in your inventory.");
+        printOut("You start to dig with the shovel in your inventory and before long, you find a strange metal crank buried in the ground, the kind that looks like it could be used to crank open something very large and heavy. You place the crank in your inventory.");
       } else {
         printOut("You can't dig in this with your bare hands.");
       }
@@ -94,6 +132,7 @@ let objectDescriptions = {
         objectDescriptions.room[2][1].WELL = "There seems to be a deep well. There's a wheel attached to a bucket and rope that looks like it can be used to lower or raise the bucket. The bucket is lowered right now.";
         printOut("You lower the bucket in the well by turning the wheel.");
       } else if (gameMap.bucketRaised === false && playerHas("key") === false) {
+        gameMap.bucketRaised = true;
         objectDescriptions.room[2][1].BUCKET = "The bucket appears to have a key inside it. How did it get there?";
         objectDescriptions.room[2][1].WELL = "There seems to be a deep well. There's a wheel attached to a bucket and rope that looks like it can be used to lower or raise the bucket. The bucket is raised right now.";
         printOut("You raise the bucket in the well by turning the wheel. There's something shiny in it...");
@@ -226,8 +265,9 @@ function look(object) {
 
 function use(object) {
   if (object in objectDescriptions.room[player.xPosition][player.yPosition]) {
-    console.log("Yep, its here")
     objectDescriptions.objectUses[object]();
+  } else if (playerHas(object.toLowerCase())) {
+    objectDescriptions.itemUses[object.toLowerCase()]();
   }
 }
 
