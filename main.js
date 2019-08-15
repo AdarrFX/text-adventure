@@ -344,10 +344,12 @@ function walk(direction) {
 function look(object) {
   if (object in objectDescriptions.room[player.xPosition][player.yPosition]) {
     printOut(objectDescriptions.room[player.xPosition][player.yPosition][object]);
-  } else if (object.toLowerCase() === gameMap.roomInventory[player.xPosition][player.yPosition]) {
+  } else if (object.toLowerCase() === gameMap.roomInventory[player.xPosition][player.yPosition] && object !== "") {
     printOut(objectDescriptions.items[object.toLowerCase()]);
   } else if (object === "AROUND"){
     printOut(gameMap.roomDescription[player.xPosition][player.yPosition]);
+  } else if (object === ""){
+    printOut("Look at what?");
   } else {
     printOut("Not sure what you want me to look at.");
   }
