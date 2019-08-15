@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Share+Tech+Mono|Quantico:700" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Text Adventure!</title>
 </head>
@@ -15,20 +15,29 @@
             <h1>Find The Crystal!</h1>
             <div class="text-adventure-display" id="text-adventure-display"></div>
             <form class="text-controls">
-                <input class="text-input" type="text" id="text-input" autofocus onkeydown="handleKeyDownText(event)">
+                <input class="text-input" type="text" id="text-input" placeholder="Enter Command" autofocus onkeydown="handleKeyDownText(event)">
             </form>
-            <div class="text-adventure-commands-container">
-                <h2>List of Commands</h2>
-                <ul>
-                    <li><h3>WALK direction</h3> [where direction is north, south, east, or west]</li>
-                    <li><h3>LOOK object</h3> [where object is an object in the area]</li>
-                    <li><h3>USE object</h3> [where object is an object in the area or on your person]</li>
-                    <li><h3>TAKE object</h3> [where object is an object in the area]</li>
-                    <li><h3>TALK person</h3> [where person is a living thing in the area]</li>
-                </ul>
+            <div class="text-adventure-commands-container clearfix">
+                <div class="commands-container">
+                    <h2>List of Commands</h2>
+                    <ul>
+                        <li><h3>GO direction</h3> [where direction is north, south, east, or west]</li>
+                        <li><h3>LOOK object</h3> [where object is an object in the area]</li>
+                        <li><h3>LOOK AROUND</h3> [Looks around the current area again]</li>
+                        <li><h3>USE object</h3> [where object is an object in the area or on your person]</li>
+                        <li><h3>TAKE object</h3> [where object is an object in the area]</li>
+                        <li><h3>TALK person</h3> [where person is a living thing in the area]</li>
+                    </ul>
+                </div>
+                <div class="map-container">
+                    <p>Game Map</p>
+                    <img src="./map.png" alt="Simple map of gameplay areas">
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>Adam Pachulski 2019</footer>
     
 </body>
 <script src="main.js" type="text/javascript"></script>

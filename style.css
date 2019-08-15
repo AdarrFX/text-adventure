@@ -8,6 +8,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 body {
     background-color: #333;
+    
 }
 
 li {
@@ -29,11 +30,13 @@ h1 {
     padding: 0;
     margin: 0;
     margin-top: 20px;
+    font-family: 'Press Start 2P', serif;
 }
 
 .wrapper {
     max-width: 1600px;
     margin: 0 auto;
+    min-height: calc(100vh - 50px);
 }
 
 .text-adventure-container {
@@ -44,7 +47,7 @@ h1 {
 .text-adventure-display {
     margin: 30px auto 15px auto;
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     width: 95%;
     border: 15px inset lightgrey;
     background-color: black;
@@ -52,6 +55,7 @@ h1 {
     overflow-y: auto;
     border-radius: 10px;
     height: 500px;
+    font-family: 'Quantico', serif;
 }
 
 .text-input{
@@ -72,6 +76,69 @@ h1 {
 .text-adventure-commands-container {
     color: white;
     margin: 0 auto;
+}
+
+.commands-container {
+    margin: 0 auto;
+    float: left;
+}
+
+.map-container {
+    margin: 20px auto 0 auto;
+    float: right;
     text-align: center;
 }
 
+img {
+    border: 2px solid black;
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    height: 30px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    p {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+
+    .text-adventure-display {
+        margin: 5px auto 5px auto;
+        border-width: 5px;
+        font-size: 1rem;
+        padding: 8px;
+        height: 400px;
+        width: 100%;
+    }
+
+    .text-input {
+        width: 90%;
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    .commands-container {
+        float: none;
+    }
+    
+    .map-container {
+        float: none;
+        text-align: center;
+        margin: 0;
+    }
+
+}

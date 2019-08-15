@@ -256,8 +256,8 @@ function printRoomDescription() {
 function parseInput(textInput) {
   textInput = textInput.toUpperCase();
 
-  if (textInput.substring(0, 4) === 'WALK') {
-    walk(textInput.substring(5, textInput.length));
+  if (textInput.substring(0, 2) === 'GO') {
+    walk(textInput.substring(3, textInput.length));
   }
 
    else if (textInput.substring(0, 4) === 'LOOK') {
@@ -285,7 +285,6 @@ function parseInput(textInput) {
 function walk(direction) {
 
   let directionCheck = "";
-  let originalLocation = [player.xPosition, player.yPosition];
 
   switch (direction) {
     case 'WEST':
@@ -293,6 +292,7 @@ function walk(direction) {
       if (pathwayCheck(player.xPosition, player.yPosition, directionCheck)) {
         player.xPosition -= 1;
         printOut("You walk to the west.");
+        triggerMonsterTimerCheck();
         printRoomDescription();
       } else {
         printOut("You can't go that way.");
@@ -304,6 +304,7 @@ function walk(direction) {
       if (pathwayCheck(player.xPosition, player.yPosition, directionCheck)) {
         player.xPosition += 1;
         printOut("You walk to the east.");
+        triggerMonsterTimerCheck();
         printRoomDescription();
       } else {
         printOut("You can't go that way.");
@@ -315,6 +316,7 @@ function walk(direction) {
       if (pathwayCheck(player.xPosition, player.yPosition, directionCheck)) {
         player.yPosition -= 1;
         printOut("You walk to the north.");
+        triggerMonsterTimerCheck();
         printRoomDescription();
       } else {
         printOut("You can't go that way.");
@@ -326,6 +328,7 @@ function walk(direction) {
       if (pathwayCheck(player.xPosition, player.yPosition, directionCheck)) {
         player.yPosition += 1;
         printOut("You walk to the south.");
+        triggerMonsterTimerCheck();
         printRoomDescription();
       } else {
         printOut("You can't go that way.");
@@ -335,7 +338,7 @@ function walk(direction) {
       default:
         printOut("That's not a valid direction.");
   }
-  triggerMonsterTimerCheck();
+  // triggerMonsterTimerCheck();
 }
 
 function look(object) {
