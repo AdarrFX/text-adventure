@@ -6,6 +6,31 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
+body {
+    background-color: #333;
+}
+
+li {
+    list-style: none;
+    padding: 2px;
+}
+
+h3 {
+    display: inline;
+}
+
+ul {
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+}
+
 .wrapper {
     max-width: 1600px;
     margin: 0 auto;
@@ -17,27 +42,35 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 }
 
 .text-adventure-display {
-    margin: 50px auto 15px auto;
-    padding: 10px;
+    margin: 30px auto 15px auto;
+    padding: 15px;
     font-size: 1.2rem;
     width: 95%;
-    border: 1px solid lightgrey;
+    border: 15px inset lightgrey;
     background-color: black;
-    color: white;
+    color: rgb(0, 255, 0);
     overflow-y: auto;
     border-radius: 10px;
     height: 500px;
 }
 
 .text-input{
-    border: 2px solid black;
-    background-color: white;
-    width: 95%;
-    font-size: 16px;
+    border: 5px inset #999;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    width: 70%;
+    font-size: 22px;
     border-radius: 5px;
   }
 
 .text-controls {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.text-adventure-commands-container {
+    color: white;
     margin: 0 auto;
     text-align: center;
 }

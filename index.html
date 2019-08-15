@@ -12,12 +12,20 @@
     
     <div class="wrapper">
         <div class="text-adventure-container">
+            <h1>Find The Crystal!</h1>
             <div class="text-adventure-display" id="text-adventure-display"></div>
             <form class="text-controls">
-                <input class="text-input" type="text" id="text-input" onkeydown="handleKeyDownText(event)">
+                <input class="text-input" type="text" id="text-input" autofocus onkeydown="handleKeyDownText(event)">
             </form>
             <div class="text-adventure-commands-container">
-                <p>List of Commands</p>
+                <h2>List of Commands</h2>
+                <ul>
+                    <li><h3>WALK direction</h3> [where direction is north, south, east, or west]</li>
+                    <li><h3>LOOK object</h3> [where object is an object in the area]</li>
+                    <li><h3>USE object</h3> [where object is an object in the area or on your person]</li>
+                    <li><h3>TAKE object</h3> [where object is an object in the area]</li>
+                    <li><h3>TALK person</h3> [where person is a living thing in the area]</li>
+                </ul>
             </div>
         </div>
     </div>
