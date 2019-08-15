@@ -59,6 +59,7 @@ h1 {
 }
 
 .text-input{
+    display: block;
     border: 5px inset #999;
     padding: 15px;
     background-color: black;
@@ -66,12 +67,8 @@ h1 {
     width: 70%;
     font-size: 22px;
     border-radius: 5px;
-  }
-
-.text-controls {
     margin: 0 auto;
-    text-align: center;
-}
+  }
 
 .text-adventure-commands-container {
     color: white;
