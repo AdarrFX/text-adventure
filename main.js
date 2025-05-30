@@ -427,6 +427,8 @@ function playerIsStillInCave() {
   return (player.xPosition === 2 && player.yPosition === 2 && gameMap.monsterSleep === false);
 }
 
+textInputBox.addEventListener("keydown", handleKeyDownText);
+
 function handleKeyDownText(event) {
 
   if (event.code === "Enter") {
@@ -441,6 +443,16 @@ function handleKeyDownText(event) {
 
   }
 }
+
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let inputtedText = textInputBox.value;
+  inputtedText = inputtedText.toUpperCase();
+  objWindow.innerHTML += '<p>' + inputtedText + '</p>';
+  textInputBox.value = "";
+  parseInput(inputtedText);
+  objWindow.scrollTop = objWindow.scrollHeight;
+});
 
 function endGame() {
   printOut("Refresh to begin a new game.");
